@@ -9,7 +9,7 @@ public class controller {
 	@GetMapping(path = "/")
 	public String hello() {
 		
-		return "Hello World from kubernetes";
+		return "Hello World from anand test one";
 	}
 	
 }
