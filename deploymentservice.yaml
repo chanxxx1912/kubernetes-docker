@@ -5,44 +5,37 @@ kind: Deployment
 metadata:
 
   name: docker-deployment
-  labels: 
-  app: docker-deployment 
 
 spec:
+   
+
+  selector:
+
+    matchLabels:
+
+      app: docker-deployment
+
   replicas: 1
-  strategy:
-  type: RollingUpdate
-  rollingUpdate:
-   maxSurge: 3
-   maxUnavailable: 1
-   imeoutSeconds: 100
-   updatePeriodSeconds: 5
 
-selector:
+  template:
 
- matchLabels:
+    metadata:
 
-  app: docker-deployment
-                        
- template:
+      labels:
 
-  metadata:
+        app: docker-deployment
 
-   labels:
+    spec:
 
-    app: docker-deployment
+      containers:
 
- spec:
+      - name: docker-deployment
 
-  containers:
+        image: chanxxx1999/docker-spring-boot
 
-  - name: docker-deployment
+        ports:
 
-    image: chanxxx1999/docker-spring-boot
-
-    ports:
-
-     - containerPort: 8090
+        - containerPort: 8090
 
 ---
 
@@ -69,3 +62,4 @@ spec:
     port: 80
 
     targetPort: 8090
+
