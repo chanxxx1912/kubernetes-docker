@@ -7,6 +7,14 @@ metadata:
   name: docker-deployment
 
 spec:
+ strategy:
+ type: RollingUpdate
+ rollingUpdate:
+  maxSurge: 3
+  maxUnavailabe: 1
+  imeoutSeconds: 100
+  intervalSeconds: 5
+  updatePeriodSeconds: 5    
 
   selector:
 
