@@ -17,7 +17,11 @@ spec:
   replicas: 1
   strategy:
     type: RollingUpdate
-
+    rollingUpdate:
+     maxSurge: 3
+     maxUnavailable: 1
+     imeoutSeconds: 100
+     updatePeriodSeconds: 5  
   template:
 
     metadata:
