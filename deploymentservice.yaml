@@ -53,7 +53,7 @@ spec:
 
   selector:
 
-    app: docker-deployment:v1
+    app: docker-deployment
 
   ports:
 
