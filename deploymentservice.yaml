@@ -14,9 +14,13 @@ spec:
     matchLabels:
 
       app: docker-deployment
-
-  replicas: 1
-
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailabe: 1
+  minReadySeconds: 5
+   
   template:
 
     metadata:
@@ -26,16 +30,33 @@ spec:
         app: docker-deployment
 
     spec:
-
+      backend 
+         
       containers:
 
       - name: docker-deployment
 
-        image: chanxxx1999/docker-spring-boot
+        image: chanxxx1999/docker-spring-boot:latest
+        imagePullPolicy: Always  
 
         ports:
-
-        - containerPort: 8090
+            - containerPort: 8090
+        readinessProbe:
+          initialDelaySeconds: 1
+          periodSeconds: 2
+          timeoutSeconds: 1
+          successThreshold: 1
+          failureThreshold: 1
+          httpGet:
+            host:
+            scheme: HTTPS
+            path: /
+            httpHeaders:
+            - name: Host
+              value: myhost
+            port: 8090      
+           
+         
 
 ---
 
