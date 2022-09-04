@@ -7,15 +7,23 @@ metadata:
   name: docker-deployment
 
 spec:
+   
+
+  selector:
+
+    matchLabels:
+
+      app: docker-deployment
+
   replicas: 1
+
   template:
+
     metadata:
+
       labels:
+
         app: docker-deployment
-        role: rolling-update 
-  
-
-
 
     spec:
 
@@ -23,19 +31,11 @@ spec:
 
       - name: docker-deployment
 
-        image: chanxxx1999/docker-spring-boot:v2
+        image: chanxxx1999/docker-spring-boot
 
         ports:
 
         - containerPort: 8090
-        readinessProbe:
-          httpGet:
-            path: /
-            port: 8090
-
-    strategy:
-      type: RollingUpdate
-      rollingUp      maxSurge: 50%         
 
 ---
 
@@ -53,7 +53,7 @@ spec:
 
   selector:
 
-    app: docker-deployment
+    app: docker-deployment:v1
 
   ports:
 
@@ -62,4 +62,6 @@ spec:
     port: 80
 
     targetPort: 8090
+
+
 
