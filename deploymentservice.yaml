@@ -10,6 +10,7 @@ spec:
    
 
   selector:
+    replicas: 1
 
     matchLabels:
 
