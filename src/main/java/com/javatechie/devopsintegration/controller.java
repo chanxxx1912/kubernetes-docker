@@ -9,7 +9,7 @@ public class controller {
 	@GetMapping(path = "/")
 	public String hello() {
 		
-		return "Hello World from chanxxx ";
+		return "Hello World from chan ";
 	}
 	
 }
