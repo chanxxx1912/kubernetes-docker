@@ -31,7 +31,7 @@ spec:
 
       - name: docker-deployment
 
-        image: chanxxx1999/docker-spring-boot
+        image: chanxxx1999/docker-spring-boot:latest
 
         ports:
 
